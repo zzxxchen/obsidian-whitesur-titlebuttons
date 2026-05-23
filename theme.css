@@ -29,7 +29,7 @@ body.mod-linux {
 
 /* 1-2 Button itself */
 body.mod-linux .titlebar-button-container.mod-right {
-  padding-right: 15px; 
+  padding-right: 13px; 
 }
 
 body.mod-linux .titlebar-button-container.mod-right .titlebar-button {
