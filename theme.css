@@ -40,7 +40,7 @@ body.mod-linux .titlebar-button-container.mod-right .titlebar-button {
   border-radius: 50%;
   background-color: transparent;
   background-repeat: no-repeat;
-  background-position: right 4px center;
+  background-position: right 0px center;
   background-size: 16px 16px;
   transition: all 0.12s ease;
 }
