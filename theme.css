@@ -160,5 +160,4 @@ body.mod-linux:not(.is-focused) .titlebar-button-container.mod-right .titlebar-b
   body.mod-linux:not(.is-focused) .titlebar-button-container.mod-right .titlebar-button.mod-minimize:hover {
     background-image: var(--svg-min-dark-nonfocused-hover);
   }
-
 }
