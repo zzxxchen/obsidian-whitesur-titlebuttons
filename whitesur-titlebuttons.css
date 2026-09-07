@@ -44,7 +44,7 @@ body.mod-linux:not(.is-popout-window) .titlebar-button-container.mod-right {
 }
 
 body.mod-linux.is-popout-window .titlebar-button-container.mod-right {
-    padding-right: 6px;
+    padding-right: 7px;
 }
 
 body.mod-linux .titlebar-button-container.mod-right .titlebar-button {
