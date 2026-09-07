@@ -35,7 +35,16 @@ body.mod-linux {
 
 /* 1-2 Button itself */
 body.mod-linux .titlebar-button-container.mod-right {
-  padding-right: 13px; 
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+body.mod-linux:not(.is-popout-window) .titlebar-button-container.mod-right {
+    padding-right: 12px;
+}
+
+body.mod-linux.is-popout-window .titlebar-button-container.mod-right {
+    padding-right: 6px;
 }
 
 body.mod-linux .titlebar-button-container.mod-right .titlebar-button {
