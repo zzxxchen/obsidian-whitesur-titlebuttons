@@ -35,8 +35,7 @@ body.mod-linux {
 
 /* 1-2 Button itself */
 body.mod-linux .titlebar-button-container.mod-right {
-    top: 50%;
-    transform: translateY(-50%);
+    background: transparent;
 }
 
 body.mod-linux:not(.is-popout-window) .titlebar-button-container.mod-right {
