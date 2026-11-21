@@ -1,3 +1,26 @@
+/* @settings
+
+name: WhiteSur Title Buttons
+id: whitesur-titlebuttons
+settings:
+    -
+        id: whitesur-titlebar-side
+        title: Titlebar button side / 标题栏按钮位置
+        description: Right side (default) or macOS-style left side.
+        description.zh: 右侧（默认）或 macOS 风格的左侧排列。
+        type: class-select
+        allowEmpty: false
+        default: whitesur-buttons-right
+        options:
+            -
+                label: Right / 右侧（默认）
+                value: whitesur-buttons-right
+            -
+                label: Left / 左侧（macOS 风格）
+                value: whitesur-buttons-left
+
+*/
+
 /* =====================================================================
    WhiteSur – Only replace titlebar buttons on Linux systems
    ===================================================================== */
@@ -169,4 +192,112 @@ body.mod-linux:not(.is-focused) .titlebar-button-container.mod-right .titlebar-b
     background-image: var(--svg-min-dark-nonfocused-hover);
   }
 
+}
+
+/* =====================================================================
+   2. macOS-style left alignment (optional, via Style Settings)
+   ===================================================================== */
+
+/* 2-1 Reserve space on the left instead of the right */
+body.mod-linux.whitesur-buttons-left {
+  /* three 24px buttons plus the container's left padding */
+  --whitesur-traffic-lights-width: 84px;
+  --whitesur-traffic-lights-gap: 8px;
+}
+
+body.mod-linux.whitesur-buttons-left.is-popout-window {
+  --whitesur-traffic-lights-width: 79px;
+}
+
+body.mod-linux.whitesur-buttons-left:not(.is-fullscreen) {
+  --frame-right-space: 0px;
+  /* traffic lights (84px) + gap (8px) + sidebar toggle (44px) + gap (8px),
+     minus the 8px tab-header padding and the ribbon that already sits on the left.
+     When the sidebar is open the toggle moves to its right edge and this value
+     is reduced to just the traffic lights (see 2-5). */
+  --frame-left-space: calc(136px - var(--frame-ribbon-left));
+}
+
+/* Ribbon hidden: Obsidian moves the toggle into the tab header, so only the
+   traffic lights need reserved room on the left. */
+body.mod-linux.whitesur-buttons-left:not(.is-fullscreen):not(.show-ribbon) {
+  --frame-left-space: calc(95px - var(--frame-ribbon-left));
+}
+
+/* 2-2 Move the (still .mod-right) container to the left */
+body.mod-linux.whitesur-buttons-left .titlebar-button-container.mod-right {
+  direction: ltr;
+  inset-inline-start: 0;
+  inset-inline-end: auto;
+  left: 0;
+  right: auto;
+  padding-left: 12px;
+  padding-right: 0;
+}
+
+body.mod-linux.whitesur-buttons-left.is-popout-window .titlebar-button-container.mod-right {
+  padding-left: 7px;
+}
+
+/* 2-3 Mirror the icon alignment */
+body.mod-linux.whitesur-buttons-left .titlebar-button-container.mod-right .titlebar-button {
+  background-position: left 0px center;
+}
+
+/* 2-4 macOS order: close, minimize, maximize */
+body.mod-linux.whitesur-buttons-left .titlebar-button-container.mod-right .titlebar-button.mod-close {
+  order: 1;
+}
+
+body.mod-linux.whitesur-buttons-left .titlebar-button-container.mod-right .titlebar-button.mod-minimize {
+  order: 2;
+}
+
+body.mod-linux.whitesur-buttons-left .titlebar-button-container.mod-right .titlebar-button.mod-maximize {
+  order: 3;
+}
+
+/* 2-5 Sidebar toggle.
+   Collapsed sidebar: keep the toggle to the right of the traffic lights.
+   Open sidebar: anchor it to the far right of the sidebar header (macOS style). */
+body.mod-linux.whitesur-buttons-left:not(.is-fullscreen).show-ribbon .workspace-ribbon.mod-primary > .sidebar-toggle-button.mod-left {
+  transform: translateX(calc(var(--whitesur-traffic-lights-width) + var(--whitesur-traffic-lights-gap)));
+}
+
+@supports (anchor-name: --whitesur-left-sidebar) {
+  /* With the toggle on the right, only the traffic lights need left-side room.
+     80px matches the macOS frame space, so the sidebar tabs sit right next to
+     the traffic lights like in the reference screenshot. */
+  body.mod-linux.whitesur-buttons-left:not(.is-fullscreen) .workspace.is-left-sidedock-open {
+    --frame-left-space: calc(80px - var(--frame-ribbon-left));
+  }
+
+  /* Reserve room for the toggle at the right edge of the sidebar header */
+  body.mod-linux.whitesur-buttons-left:not(.is-fullscreen).show-ribbon .workspace.is-left-sidedock-open .workspace-tabs.mod-top-left-space .workspace-tab-header-container {
+    anchor-name: --whitesur-left-sidebar;
+    padding-right: calc(var(--tab-container-padding-end) + var(--ribbon-width) + var(--whitesur-traffic-lights-gap));
+  }
+
+  /* The tab header is a window-drag region; punch a no-drag hole so the
+     pinned toggle still receives clicks */
+  body.mod-linux.whitesur-buttons-left:not(.is-fullscreen).show-ribbon .workspace.is-left-sidedock-open .workspace-tabs.mod-top-left-space .workspace-tab-header-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: var(--whitesur-traffic-lights-gap);
+    width: var(--ribbon-width);
+    height: 100%;
+    -webkit-app-region: no-drag;
+  }
+
+  /* Pin the toggle to that right edge */
+  body.mod-linux.whitesur-buttons-left:not(.is-fullscreen).show-ribbon .workspace.is-left-sidedock-open .workspace-ribbon.mod-primary > .sidebar-toggle-button.mod-left {
+    position: fixed;
+    position-anchor: --whitesur-left-sidebar;
+    top: 0;
+    inset-inline-start: auto;
+    left: calc(anchor(--whitesur-left-sidebar right, 144px) - var(--ribbon-width) - var(--whitesur-traffic-lights-gap));
+    transform: none;
+    z-index: 1;
+  }
 }
