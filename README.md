@@ -2,12 +2,12 @@
 
 A CSS snippet that replaces Obsidian's default Linux title bar buttons with [WhiteSur GTK](https://github.com/vinceliuice/WhiteSur-gtk-theme) style buttons.
 
-# Screenshot
+# Screenshots
 
-Screenshots show the default right-side layout.
+Screenshot 1 shows the default right-side layout; screenshot 2 shows the macOS-style left-side layout.
 
-![Screenshot_1](https://github.com/zzxxchen/whitesur-gtk-style-titlebuttons-for-obsidian/blob/main/screenshot_1.png)
-![Screenshot_2](https://github.com/zzxxchen/whitesur-gtk-style-titlebuttons-for-obsidian/blob/main/screenshot_2.png)
+![Right-side layout](screenshot_1.png)
+![Left-side layout](screenshot_2.png)
 
 # Installation
 
