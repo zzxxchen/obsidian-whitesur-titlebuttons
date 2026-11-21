@@ -21,10 +21,10 @@ By default the buttons stay on the right. To move them to the left in macOS orde
 
 1. Install the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin
 2. Open **Settings → Style Settings → WhiteSur Title Buttons**
-3. Enable **Left titlebar buttons (macOS style)** / **左侧标题栏按钮（macOS 风格）**
+3. Turn on **Left titlebar buttons (macOS style)** (in Chinese: **左侧标题栏按钮（macOS 风格）**). The setting label follows Obsidian's interface language; off keeps the buttons on the right.
 
-The left sidebar toggle stays visible: it sits to the right of the traffic lights when the sidebar is collapsed, and at the far right of the sidebar header when the sidebar is open.
+In left mode the left sidebar toggle stays visible: it sits to the right of the traffic lights when the sidebar is collapsed, and at the far right of the sidebar header when the sidebar is open. The window buttons remain fully clickable.
 
-This applies to the main window and popout windows. The switch is manual: a CSS snippet cannot read the GTK `button-layout` setting. Following the system setting automatically would require a companion plugin.
+This applies to the main window and popout windows. The choice is manual: a CSS snippet cannot read the GTK `button-layout` setting. Following the system setting automatically would require a companion plugin.
 
 Without Style Settings, add the `whitesur-buttons-left` class to the `body` element with another plugin or custom CSS.
