@@ -294,3 +294,15 @@ body.mod-linux.whitesur-buttons-left:not(.is-fullscreen).show-ribbon .workspace-
     z-index: 1;
   }
 }
+
+/* 2-6 The window buttons sit on top of the ribbon's draggable titlebar strip
+   in left mode. Make that strip non-draggable so the buttons receive clicks. */
+body.mod-linux.whitesur-buttons-left:not(.is-fullscreen) .workspace-ribbon.mod-primary:before {
+  -webkit-app-region: no-drag;
+}
+
+/* Extend the tab header's no-drag strip so it covers the full traffic-light
+   block, including the last 4px past the 80px frame space. */
+body.mod-linux.whitesur-buttons-left:not(.is-fullscreen) .workspace-tabs.mod-top-left-space .workspace-tab-header-container:before {
+  width: calc(var(--frame-left-space) + 4px);
+}
