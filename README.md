@@ -21,7 +21,7 @@ By default the buttons stay on the right. To move them to the left in macOS orde
 
 1. Install the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin
 2. Open **Settings → Style Settings → WhiteSur Title Buttons**
-3. Set **Titlebar button side** to **Left / 左侧（macOS 风格）**
+3. Enable **Left titlebar buttons (macOS style)** / **左侧标题栏按钮（macOS 风格）**
 
 The left sidebar toggle stays visible: it sits to the right of the traffic lights when the sidebar is collapsed, and at the far right of the sidebar header when the sidebar is open.
 

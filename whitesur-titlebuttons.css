@@ -4,20 +4,13 @@ name: WhiteSur Title Buttons
 id: whitesur-titlebuttons
 settings:
     -
-        id: whitesur-titlebar-side
-        title: Titlebar button side / 标题栏按钮位置
-        description: Right side (default) or macOS-style left side.
-        description.zh: 右侧（默认）或 macOS 风格的左侧排列。
-        type: class-select
-        allowEmpty: false
-        default: whitesur-buttons-right
-        options:
-            -
-                label: Right / 右侧（默认）
-                value: whitesur-buttons-right
-            -
-                label: Left / 左侧（macOS 风格）
-                value: whitesur-buttons-left
+        id: whitesur-buttons-left
+        title: Left titlebar buttons (macOS style)
+        title.zh: 左侧标题栏按钮（macOS 风格）
+        description: Off keeps the buttons on the right. On moves them to the left in close, minimize, maximize order.
+        description.zh: 关闭时按钮保持在右侧；开启后移到左侧，按关闭、最小化、最大化排列。
+        type: class-toggle
+        default: false
 
 */
 
